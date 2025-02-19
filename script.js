@@ -31,6 +31,7 @@ function getWeather(city) {
 }
 
 function displayWeather(data) {
+	console.log(data);
 	const weatherInfo = document.getElementById('weather-info');
 	const iconUrl = `https:${data.current.condition.icon}`; // HTTPS URL로 변경
 	weatherInfo.innerHTML = `
