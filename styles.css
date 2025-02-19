@@ -77,3 +77,24 @@ button:hover {
 canvas {
 	margin-top: 20px;
 }
+
+.weather-icon {
+	cursor: help;
+	position: relative;
+	font-size: 1.2em;
+}
+
+.weather-icon:hover::after {
+	content: attr(title);
+	position: absolute;
+	left: 50%;
+	transform: translateX(-50%);
+	bottom: 100%;
+	padding: 5px 10px;
+	background: rgba(0, 0, 0, 0.8);
+	color: white;
+	border-radius: 4px;
+	font-size: 14px;
+	white-space: nowrap;
+	z-index: 1000;
+}

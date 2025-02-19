@@ -62,6 +62,7 @@ function getWeatherIcon(conditionText) {
 	if (conditionText.includes('진눈깨비')) return '🌨️';
 	if (conditionText.includes('가벼운 눈') || conditionText.includes('약한 눈')) return '🌨️';
 	if (conditionText.includes('강한 눈') || conditionText.includes('폭설')) return '❄️';
+	if (conditionText.includes('날리는눈') || conditionText.includes('날리는 눈') || conditionText.includes('눈보라')) return '🌨️';
 
 	// 특수 기상 현상
 	if (conditionText.includes('안개')) return '🌫️';
@@ -85,6 +86,7 @@ function displayWeatherTable(data) {
 	const temperatures = [];
 	const precipitations = [];
 	const windSpeeds = [];
+	const conditions = []; // 날씨 상태 텍스트 저장을 위한 배열 추가
 
 	// 날짜별 날씨 정보
 	data.forecast.forecastday.forEach(day => {
@@ -95,12 +97,20 @@ function displayWeatherTable(data) {
 		temperatures.push(day.day.avgtemp_c);
 		precipitations.push(day.day.totalprecip_mm);
 		windSpeeds.push(day.day.maxwind_kph);
+		conditions.push(conditionText); // 날씨 상태 텍스트 저장
 
-		// 테이블 업데이트
+		// 테이블 업데이트 - 이모티콘에 alt 텍스트와 title 추가
 		table.innerHTML += `
             <tr>
                 <td>${date}일</td>
-                <td>${weatherIcons[weatherIcons.length - 1]}</td>
+                <td>
+                    <span 
+                        role="img" 
+                        aria-label="${conditions[conditions.length - 1]}"
+                        title="${conditions[conditions.length - 1]}"
+                        class="weather-icon"
+                    >${weatherIcons[weatherIcons.length - 1]}</span>
+                </td>
                 <td>${temperatures[temperatures.length - 1]}</td>
                 <td>${precipitations[precipitations.length - 1]}</td>
                 <td>${windSpeeds[windSpeeds.length - 1]}</td>
