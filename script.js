@@ -49,13 +49,14 @@ function getWeatherIcon(conditionText) {
 	if (conditionText.includes('맑음') || conditionText.includes('화창')) return '☀️';
 	if (conditionText.includes('대체로 맑음') || conditionText.includes('약간 흐림')) return '🌤️';
 	if (conditionText.includes('부분적으로 흐림') || conditionText.includes('구름 조금')) return '⛅';
-	if (conditionText.includes('흐림') || conditionText.includes('구름많음')) return '☁️';
+	if (conditionText.includes('흐림') || conditionText.includes('구름많음') || conditionText.includes('흐린')) return '☁️';
 
 	// 비 관련
 	if (conditionText.includes('이슬비')) return '🌦️';
 	if (conditionText.includes('가벼운 비') || conditionText.includes('약한 비')) return '🌧️';
 	if (conditionText.includes('강한 비') || conditionText.includes('폭우')) return '⛈️';
 	if (conditionText.includes('소나기')) return '🌧️';
+	if (conditionText.includes('근처 곳곳에 비') || conditionText.includes('국지성 비')) return '🌦️';
 
 	// 눈 관련
 	if (conditionText.includes('진눈깨비')) return '🌨️';
