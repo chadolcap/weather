@@ -45,13 +45,36 @@ function displayWeather(data) {
 }
 
 function getWeatherIcon(conditionText) {
-	// 날씨 상태에 따른 이모티콘 매핑
-	if (conditionText.includes('맑음')) return '☀️'; // 맑음
-	if (conditionText.includes('구름')) return '☁️'; // 구름 많음
-	if (conditionText.includes('비')) return '🌧️'; // 비
-	if (conditionText.includes('눈')) return '❄️'; // 눈
-	if (conditionText.includes('안개')) return '🌫️'; // 안개
-	if (conditionText.includes('천둥')) return '⛈️'; // 천둥
+	// 맑음/흐림 관련
+	if (conditionText.includes('맑음') || conditionText.includes('화창')) return '☀️';
+	if (conditionText.includes('대체로 맑음') || conditionText.includes('약간 흐림')) return '🌤️';
+	if (conditionText.includes('부분적으로 흐림') || conditionText.includes('구름 조금')) return '⛅';
+	if (conditionText.includes('흐림') || conditionText.includes('구름많음')) return '☁️';
+
+	// 비 관련
+	if (conditionText.includes('이슬비')) return '🌦️';
+	if (conditionText.includes('가벼운 비') || conditionText.includes('약한 비')) return '🌧️';
+	if (conditionText.includes('강한 비') || conditionText.includes('폭우')) return '⛈️';
+	if (conditionText.includes('소나기')) return '🌧️';
+
+	// 눈 관련
+	if (conditionText.includes('진눈깨비')) return '🌨️';
+	if (conditionText.includes('가벼운 눈') || conditionText.includes('약한 눈')) return '🌨️';
+	if (conditionText.includes('강한 눈') || conditionText.includes('폭설')) return '❄️';
+
+	// 특수 기상 현상
+	if (conditionText.includes('안개')) return '🌫️';
+	if (conditionText.includes('연무')) return '🌫️';
+	if (conditionText.includes('천둥') || conditionText.includes('번개')) return '⛈️';
+	if (conditionText.includes('우박')) return '🌨️';
+
+	// 미세먼지
+	if (conditionText.includes('미세먼지') || conditionText.includes('황사')) return '😷';
+
+	// 기타 날씨
+	if (conditionText.includes('바람')) return '🌪️';
+	if (conditionText.includes('태풍')) return '🌀';
+
 	return '🌈'; // 기본 이모티콘
 }
 
